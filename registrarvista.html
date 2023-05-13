@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title></title> 
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+	<link rel="stylesheet" href="estilos.css">
+</head>  
+<body>
+	<form class="formulario" onsubmit="return validateRegistrationForm()">
+		<h1>Registrate</h1>
+		<div class="contenedor">
+			<div class="input-contenedor">
+				<i class="fas fa-user icon"></i>
+				<input type="text" id="nombre" placeholder="Nombre Completo" required>
+			</div>
+			<div class="input-contenedor">
+				<i class="fas fa-envelope icon"></i>
+				<input type="text" id="email" placeholder="Correo Electronico" required>
+			</div>
+			<div class="input-contenedor">
+				<i class="fas fa-key icon"></i>
+				<input type="password" id="password" placeholder="Contraseña" required>
+			</div>
+			<div class="input-contenedor">
+				<i class="fas fa-phone icon"></i>
+				<input type="text" id="telefono" placeholder="Teléfono" required>
+			</div>
+			<div class="input-contenedor">
+				<i class="fas fa-calendar-alt icon"></i>
+				<input type="date" id="fechaNacimiento" required>
+			</div>
+			<div class="input-contenedor">
+				<i class="fas fa-venus-mars icon"></i>
+				<select id="sexo" required>
+					<option value="">Seleccione</option>
+					<option value="Hombre">Hombre</option>
+					<option value="Mujer">Mujer</option>
+					<option value="Otros">Otros</option>
+				</select>
+			</div>
+			<input type="submit" value="Registrate" class="button">
+			<p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+			<p>¿Ya tienes una cuenta?<a class="link" href="loginvista.html">Iniciar Sesion</a></p>
+		</div>
+	</form>
+
+	<script>
+		function validateRegistrationForm() {
+			var nombre = document.getElementById("nombre").value;
+			var email = document.getElementById("email").value;
+			var password = document.getElementById("password").value;
+			var telefono = document.getElementById("telefono").value;
+			var fechaNacimiento = document.getElementById("fechaNacimiento").value;
+			var sexo = document.getElementById("sexo").value;
+
+			if (nombre.trim() === "" || email.trim() === "" || password.trim() === "" || telefono.trim() === "" || fechaNacimiento.trim() === "" || sexo === "") {
+				alert("Por favor, completa todos los campos.");
+				return false;
+			}
+
+			if (!isValidEmail(email)) {
+				alert("Ingresa un correo electrónico válido.");
+				return false;
+			}
+
+			if (password.length < 8) {
+				alert("La contraseña debe tener al menos 8 caracteres.");
+				return false;
+			}
+
+			if (!isValidPhoneNumber(telefono
